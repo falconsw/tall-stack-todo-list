@@ -10,6 +10,10 @@
 </head>
 <body>
 
+<div class="h-screen w-full flex justify-center items-center bg-gray-800">
+    @livewire('todo-list')
+</div>
+
 
 <script src="{{ url("js/app.js") }}"></script>
 @livewireScripts
