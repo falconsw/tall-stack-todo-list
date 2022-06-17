@@ -11,3 +11,5 @@ composer install
 npm install
 npm run dev
 ```
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=falconsw_tall-stack-todo-list&metric=alert_status)](https://sonarcloud.io/dashboard?id=falconsw_tall-stack-todo-list)
