@@ -3,6 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Todo;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 
 class TodoList extends Component
@@ -10,7 +14,10 @@ class TodoList extends Component
     public $name;
     public $completed;
 
-    public function addTodo()
+    /**
+     * @return void
+     */
+    public function addTodo(): void
     {
         $this->validate([
             'name' => 'required',
@@ -25,7 +32,11 @@ class TodoList extends Component
         $this->completed = false;
     }
 
-    public function deleteTodo($id)
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function deleteTodo($id): RedirectResponse
     {
         Todo::destroy($id);
 
@@ -33,7 +44,11 @@ class TodoList extends Component
 
     }
 
-    public function updateTodo($id)
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function updateTodo($id): RedirectResponse
     {
         $todo = Todo::find($id);
         $todo->completed = !$todo->completed;
@@ -43,7 +58,10 @@ class TodoList extends Component
 
     }
 
-    public function render()
+    /**
+     * @return Application|Factory|View
+     */
+    public function render(): View|Factory|Application
     {
         $todos = Todo::all();
         return view('livewire.todo-list', compact('todos'));
